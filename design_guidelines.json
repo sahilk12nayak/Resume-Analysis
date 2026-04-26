@@ -1,0 +1,126 @@
+{
+  "theme": "light",
+  "archetype": "4 (Swiss & High-Contrast)",
+  "design_philosophy": "Authoritative, objective, and function-first. The AI acts as a strict but truthful judge of the resume against the job description. The UI exposes the grid skeleton to feel technical, analytical, and precise.",
+  "colors": {
+    "background": "#FFFFFF",
+    "surface": "#F9FAFB",
+    "border": "#111111",
+    "text": {
+      "primary": "#111111",
+      "secondary": "#6B7280",
+      "muted": "#9CA3AF"
+    },
+    "brand": {
+      "primary": "#002FA7",
+      "accent": "#FF3B30",
+      "warning": "#FACC15",
+      "success": "#002FA7" 
+    },
+    "rules": [
+      "No gradients. Solid colors only.",
+      "Primary CTA is International Klein Blue (#002FA7).",
+      "Missing skills or urgent gaps are Signal Red (#FF3B30).",
+      "Borders are harsh, 1px solid black (#111111)."
+    ]
+  },
+  "typography": {
+    "font_family": {
+      "heading": "Chivo, sans-serif",
+      "body": "Chivo, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "scales": {
+      "h1": "text-5xl sm:text-6xl+ font-black tracking-tighter uppercase leading-none",
+      "h2": "text-3xl sm:text-4xl font-bold tracking-tight",
+      "h3": "text-xl sm:text-2xl font-bold",
+      "body": "text-base font-normal leading-relaxed",
+      "overline": "text-xs font-bold tracking-[0.2em] uppercase"
+    },
+    "rules": [
+      "Use massive weight contrast: font-black for headings, font-light or normal for body.",
+      "Line height for headings must be leading-none.",
+      "Labels and overlines must be uppercase with wide tracking."
+    ]
+  },
+  "layout_and_spacing": {
+    "philosophy": "Generous spacing in hero, but dense 'Control Room' grid for the dashboard results.",
+    "container_padding": "p-8 md:p-12",
+    "border_radius": "rounded-none",
+    "grid_patterns": {
+      "hero_split": "grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch",
+      "dashboard_grid": "Grid Borders: Outer container has border-black. Children have border-r border-b border-black. Use negative margins or strict flex/grid to collapse double borders."
+    }
+  },
+  "components": {
+    "button": {
+      "style": "bg-[#002FA7] text-white rounded-none px-8 py-4 font-bold tracking-wide uppercase hover:bg-black transition-colors",
+      "secondary": "bg-transparent text-black border border-black rounded-none px-8 py-4 font-bold tracking-wide uppercase hover:bg-black hover:text-white transition-colors"
+    },
+    "input": {
+      "style": "bg-white border border-black rounded-none px-4 py-3 focus:ring-2 focus:ring-[#002FA7] focus:outline-none focus:border-transparent font-mono text-sm"
+    },
+    "card": {
+      "style": "bg-white border border-black rounded-none p-6 shadow-none"
+    },
+    "gauge_score": {
+      "description": "A massive typography-led score display instead of a generic circle. E.g., '78' taking up half the box, with 'MATCH' in mono text."
+    },
+    "skill_badge": {
+      "match": "border border-[#002FA7] text-[#002FA7] px-2 py-1 text-xs uppercase font-bold",
+      "missing": "border border-[#FF3B30] text-[#FF3B30] px-2 py-1 text-xs uppercase font-bold",
+      "partial": "border border-black text-black px-2 py-1 text-xs uppercase font-bold"
+    }
+  },
+  "pages_and_views": {
+    "landing_view": {
+      "description": "Split screen layout. Top: Massive Typography 'THE RESUME. THE JOB. THE VERDICT.' Below: Two equal columns. Left is a textarea for Job Description. Right is a dashed-border dropzone for the Resume. A full-width 'ANALYZE MATCH' button spans below both.",
+      "background_image": "Use the abstract geometric image as a very faint watermark or texture inside the dropzone."
+    },
+    "loading_view": {
+      "description": "A brutalist terminal-style loader. 'EXTRACTING SKILLS... MATCHING...'. Progress bar is a solid black box filling up with Klein Blue."
+    },
+    "dashboard_view": {
+      "description": "The 'Control Room' grid. Dense, data-heavy, 1px borders everywhere. Sections: Candidate Profile (top row), Score (massive box), Skill Match Breakdown (list of JD requirements vs Resume facts), and Personalized Learning Plan (Actionable resources and time estimates).",
+      "layout": "Use a complex CSS grid (e.g. 12 columns) where Score spans 4 cols, Profile spans 8 cols. Next row: Skills span 6 cols, Learning plan spans 6 cols."
+    }
+  },
+  "media": {
+    "images": [
+      {
+        "category": "hero_texture",
+        "url": "https://static.prod-images.emergentagent.com/jobs/eee64ae1-8ee1-4acc-a342-4efc0f2a4494/images/7abd8d6594f905420ec565a368529d721f124011b473eda9e90b3ee9d04084b2.png",
+        "description": "Abstract Swiss style geometric pattern, intersecting precise lines and grids, minimalist. Use at 10-20% opacity inside the dropzone or as a page background texture.",
+        "usage": "background"
+      },
+      {
+        "category": "candidate_avatar",
+        "url": "https://images.unsplash.com/photo-1758600587839-56ba05596c69?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBjb3Jwb3JhdGUlMjBoZWFkc2hvdCUyMHBvcnRyYWl0JTIwd2hpdGUlMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NzIwNzIwOHww&ixlib=rb-4.1.0&q=85",
+        "description": "A professional headshot to simulate the uploaded resume's extracted candidate profile.",
+        "usage": "dashboard_profile"
+      }
+    ]
+  },
+  "motion_and_interactions": {
+    "hover": "Instant color inversion (white to black, black to white) for buttons. No soft fades.",
+    "page_transition": "Stark, abrupt slide-up or instant swap. Brutalist design avoids slow eases.",
+    "loader": "Staggered text reveal, like a terminal printing lines."
+  },
+  "dependencies": [
+    "lucide-react",
+    "framer-motion",
+    "@phosphor-icons/react",
+    "recharts"
+  ],
+  "accessibility_and_testing": {
+    "contrast": "Ensure all text meets APCA standards. Black on white is maximum contrast. Klein blue on white passes easily.",
+    "data_testid": "Apply `data-testid` to all form inputs, buttons, and major dashboard sections."
+  },
+  "instructions_to_main_agent": [
+    "Build the application as a single-page flow: Landing -> Processing -> Dashboard.",
+    "Use standard HTML inputs/divs rather than Shadcn 'Cards' to achieve the raw, border-collapse 'Grid Borders' look.",
+    "Install `Chivo` font via Google Fonts in index.html or import in CSS.",
+    "Do NOT use soft shadows, rounded corners, or gradients. Keep it flat, harsh, and technical.",
+    "In the Learning Plan, show concrete examples of 'Adjacent Skills' (e.g., JD wants React Native, Resume has React -> Adjacent Skill: React Native, Resource: 'React Native Docs', Time: '20 hours')."
+  ]
+}
