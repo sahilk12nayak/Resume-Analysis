@@ -4,6 +4,8 @@ An AI-powered resume match analyzer. Paste a job description, drop a resume, and
 
 Built with **Claude Sonnet 4.5**, FastAPI, React, and MongoDB. Brutalist Swiss design.
 
+**Visit the site using this URL: https://skill-gap-analyzer-21.emergent.host/**
+
 ---
 
 ## ✦ Features
