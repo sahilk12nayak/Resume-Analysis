@@ -30,6 +30,12 @@ db = client[os.environ['DB_NAME']]
 
 EMERGENT_LLM_KEY = os.environ.get('EMERGENT_LLM_KEY')
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
 
@@ -216,6 +222,12 @@ async def analyze(
         response = await chat.send_message(UserMessage(text=prompt))
     except Exception as e:
         logger.exception("LLM call failed")
+        msg = str(e)
+        if "FREE_USER_EXTERNAL_ACCESS_DENIED" in msg or "rate" in msg.lower() or "429" in msg:
+            raise HTTPException(
+                status_code=429,
+                detail="AI service is temporarily rate-limited. Please wait a moment and try again.",
+            )
         raise HTTPException(status_code=502, detail=f"AI analysis failed: {e}")
 
     try:
@@ -263,13 +275,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
-
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
