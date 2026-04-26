@@ -1,4 +1,4 @@
-"# RESUME // VERDICT
+# RESUME // VERDICT
 
 An AI-powered resume match analyzer. Paste a job description, drop a resume, and get an honest skill-by-skill verdict plus a personalized learning plan focused on adjacent skills the candidate can realistically acquire — with curated resources and time estimates.
 
@@ -202,4 +202,4 @@ If you hit rate limits, top up your Universal Key balance from **Profile → Uni
 ## ✦ License
 
 Internal project. All rights reserved.
-"
+
